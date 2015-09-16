@@ -1,1 +1,1 @@
-<h1><?php echo 'Hello!'; ?></h1>
+<h1><?php echo 'Hello '.$name.'!'; ?></h1>

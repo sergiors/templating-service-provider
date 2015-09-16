@@ -1,6 +1,6 @@
 Templating Service Provider
 ---------------------------
-A service to help you to template engine implementation using PHP and Twig.
+A service to help you to template engine implementation using PHP or Twig.
 
 Install
 -------
