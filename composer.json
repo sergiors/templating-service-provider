@@ -1,5 +1,6 @@
 {
   "name": "inbep/templating-service-provider",
+  "description": "Template engine implementation using PHP or Twig for Silex",
   "authors": [
     {
       "name": "Sérgio Rafael Siqueira",

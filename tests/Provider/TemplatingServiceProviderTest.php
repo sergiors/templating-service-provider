@@ -27,8 +27,11 @@ class TemplatingServiceProviderTest extends WebTestCase
         $app->register(new TemplatingServiceProvider());
         $app['templating.path'] = [__DIR__.'/../Resources/views/%name%'];
 
-        $expected = "<h1>Hello!</h1>\n";
-        $this->assertEquals($app['templating']->render('hello.php'), $expected);
+        $expected = "<h1>Hello Sérgio!</h1>\n";
+        $rendered = $app['templating']->render('hello.php', [
+            'name' => 'Sérgio'
+        ]);
+        $this->assertEquals($rendered, $expected);
     }
 
     /**
@@ -42,8 +45,11 @@ class TemplatingServiceProviderTest extends WebTestCase
         ]);
         $app->register(new TemplatingServiceProvider());
 
-        $expected = "<h1>Hello!</h1>\n";
-        $this->assertEquals($app['templating']->render('hello.html.twig'), $expected);
+        $expected = "<h1>Hello Sérgio!</h1>\n";
+        $rendered = $app['templating']->render('hello.html.twig', [
+            'name' => 'Sérgio'
+        ]);
+        $this->assertEquals($rendered, $expected);
     }
 
     public function createApplication()
