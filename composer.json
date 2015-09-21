@@ -24,6 +24,6 @@
   },
   "suggest": {
     "twig/twig": "For using the Twig",
-    "symfony/twig-bridge": "To enable Twig"
+    "symfony/twig-bridge": "For using the Twig"
   }
 }
