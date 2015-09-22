@@ -10,7 +10,7 @@ composer require inbep/templating-service-provider
 
 ```php
 $app->register(Inbep\Silex\Provider\TemplatingServiceProvider(), [
-    'templating.path' => '__DIR__.'/../Resources/views/%name%' // or an array
+    'templating.paths' => '__DIR__.'/../Resources/views/%name%' // or an array
 ]);
 
 $app['templating']->render(/.../);

@@ -25,7 +25,7 @@ class TemplatingServiceProviderTest extends WebTestCase
     {
         $app = $this->createApplication();
         $app->register(new TemplatingServiceProvider());
-        $app['templating.path'] = [__DIR__.'/../Resources/views/%name%'];
+        $app['templating.paths'] = [__DIR__.'/../Resources/views/%name%'];
 
         $expected = "<h1>Hello Sérgio!</h1>\n";
         $rendered = $app['templating']->render('hello.php', [

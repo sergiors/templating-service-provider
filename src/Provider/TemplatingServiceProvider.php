@@ -16,14 +16,14 @@ class TemplatingServiceProvider implements ServiceProviderInterface
 {
     public function register(Application $app)
     {
-        $app['templating.path'] = [];
+        $app['templating.paths'] = [];
 
         $app['templating.name_parser'] = $app->share(function () {
             return new TemplateNameParser();
         });
 
         $app['templating.loader'] = $app->share(function (Application $app) {
-            return new FilesystemLoader($app['templating.path']);
+            return new FilesystemLoader($app['templating.paths']);
         });
 
         $app['templating'] = $app->share(function (Application $app) {
