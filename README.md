@@ -5,11 +5,13 @@ A service to help you with template engine implementation using PHP or Twig.
 Install
 -------
 ```bash
-composer require inbep/templating-service-provider
+composer require sergiors/templating-service-provider
 ```
 
 ```php
-$app->register(Inbep\Silex\Provider\TemplatingServiceProvider(), [
+use Sergiors\Silex\Provider\TemplatingServiceProvider;
+
+$app->register(new TemplatingServiceProvider(), [
     'templating.paths' => '__DIR__.'/../Resources/views/%name%' // or an array
 ]);
 
@@ -18,10 +20,13 @@ $app['templating']->render(/.../);
 
 If you want to use Twig:
 ```php
-$app->register(Silex\Provider\TwigServiceProvider(), [
+use Silex\Provider\TwigServiceProvider;
+use Sergiors\Silex\Provider\TemplatingServiceProvider;
+
+$app->register(new TwigServiceProvider(), [
     'twig.path' => __DIR__.'/../Resources/views'
 ]);
-$app->register(Inbep\Silex\Provider\TemplatingServiceProvider());
+$app->register(new TemplatingServiceProvider());
 
 $app['templating']->render(/.../);
 ```

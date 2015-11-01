@@ -1,5 +1,5 @@
 {
-  "name": "inbep/templating-service-provider",
+  "name": "sergiors/templating-service-provider",
   "description": "Template engine implementation using PHP or Twig for Silex",
   "authors": [
     {
@@ -10,7 +10,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Inbep\\Silex\\": "src"
+      "Sergiors\\Silex\\": "src"
     }
   },
   "require": {
@@ -20,7 +20,13 @@
   "require-dev": {
     "phpunit/phpunit": "~4.8",
     "twig/twig": "~1.22",
-    "symfony/twig-bridge": "~2.7"
+    "symfony/twig-bridge": "~2.7",
+    "pdepend/pdepend": "~2.0",
+    "phing/phing": "~2.10",
+    "phploc/phploc": "~2.1",
+    "phpmd/phpmd": "~2.2",
+    "sebastian/phpcpd": "~2.0",
+    "squizlabs/php_codesniffer": "~2.1"
   },
   "suggest": {
     "twig/twig": "For using the Twig",
