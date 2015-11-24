@@ -23,7 +23,11 @@ class TemplatingServiceProvider implements ServiceProviderInterface
         });
 
         $app['templating.loader'] = $app->share(function (Application $app) {
-            return new FilesystemLoader($app['templating.paths']);
+            $loader = new FilesystemLoader($app['templating.paths']);
+            if ($app['logger']) {
+                $loader->setLogger($app['logger']);
+            }
+            return $loader;
         });
 
         $app['templating'] = $app->share(function (Application $app) {
