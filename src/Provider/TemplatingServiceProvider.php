@@ -1,4 +1,5 @@
 <?php
+
 namespace Sergiors\Silex\Provider;
 
 use Silex\Application;
@@ -27,12 +28,13 @@ class TemplatingServiceProvider implements ServiceProviderInterface
             if ($app['logger']) {
                 $loader->setLogger($app['logger']);
             }
+
             return $loader;
         });
 
         $app['templating'] = $app->share(function (Application $app) {
             $engines = [
-                new PhpEngine($app['templating.name_parser'], $app['templating.loader'])
+                new PhpEngine($app['templating.name_parser'], $app['templating.loader']),
             ];
 
             if (isset($app['twig']) && class_exists('Symfony\Bridge\Twig\TwigEngine')) {

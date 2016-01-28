@@ -1,35 +1,40 @@
 {
-  "name": "sergiors/templating-service-provider",
-  "description": "Template engine implementation using PHP or Twig for Silex",
-  "authors": [
-    {
-      "name": "Sérgio Rafael Siqueira",
-      "email": "sergio@inbep.com.br"
+    "name": "sergiors/templating-service-provider",
+    "description": "Template engine implementation using PHP or Twig for Silex",
+    "authors": [
+        {
+            "name": "Sérgio Rafael Siqueira",
+            "email": "sergio@inbep.com.br"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "silex/silex": "~1.3",
+        "symfony/templating": "~2.7|~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8",
+        "twig/twig": "~1.22",
+        "symfony/twig-bridge": "~2.7|~3.0",
+        "pdepend/pdepend": "~2.0",
+        "phing/phing": "~2.10",
+        "phploc/phploc": "~2.1",
+        "phpmd/phpmd": "~2.2",
+        "sebastian/phpcpd": "~2.0",
+        "squizlabs/php_codesniffer": "~2.1"
+    },
+    "suggest": {
+        "twig/twig": "For using the Twig",
+        "symfony/twig-bridge": "For using the Twig"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sergiors\\Silex\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sergiors\\Silex\\Tests\\": "src"
+        }
     }
-  ],
-  "license": "MIT",
-  "autoload": {
-    "psr-4": {
-      "Sergiors\\Silex\\": "src"
-    }
-  },
-  "require": {
-    "silex/silex": "~1.3",
-    "symfony/templating": "~2.7"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~4.8",
-    "twig/twig": "~1.22",
-    "symfony/twig-bridge": "~2.7",
-    "pdepend/pdepend": "~2.0",
-    "phing/phing": "~2.10",
-    "phploc/phploc": "~2.1",
-    "phpmd/phpmd": "~2.2",
-    "sebastian/phpcpd": "~2.0",
-    "squizlabs/php_codesniffer": "~2.1"
-  },
-  "suggest": {
-    "twig/twig": "For using the Twig",
-    "symfony/twig-bridge": "For using the Twig"
-  }
 }

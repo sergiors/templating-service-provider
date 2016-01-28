@@ -1,10 +1,12 @@
 <?php
-namespace Sergiors\Silex\Provider;
+
+namespace Sergiors\Silex\Tests\Provider;
 
 use Silex\Application;
 use Silex\WebTestCase;
 use Silex\Provider\TwigServiceProvider;
 use Symfony\Component\Templating\EngineInterface;
+use Sergiors\Silex\Provider\TemplatingServiceProvider;
 
 class TemplatingServiceProviderTest extends WebTestCase
 {
@@ -29,7 +31,7 @@ class TemplatingServiceProviderTest extends WebTestCase
 
         $expected = "<h1>Hello Sérgio!</h1>\n";
         $rendered = $app['templating']->render('hello.php', [
-            'name' => 'Sérgio'
+            'name' => 'Sérgio',
         ]);
         $this->assertEquals($rendered, $expected);
     }
@@ -41,13 +43,13 @@ class TemplatingServiceProviderTest extends WebTestCase
     {
         $app = $this->createApplication();
         $app->register(new TwigServiceProvider(), [
-            'twig.path' => __DIR__.'/../Resources/views'
+            'twig.path' => __DIR__.'/../Resources/views',
         ]);
         $app->register(new TemplatingServiceProvider());
 
         $expected = "<h1>Hello Sérgio!</h1>\n";
         $rendered = $app['templating']->render('hello.html.twig', [
-            'name' => 'Sérgio'
+            'name' => 'Sérgio',
         ]);
         $this->assertEquals($rendered, $expected);
     }
@@ -57,6 +59,7 @@ class TemplatingServiceProviderTest extends WebTestCase
         $app = new Application();
         $app['debug'] = true;
         $app['exception_handler']->disable();
+
         return $app;
     }
 }
