@@ -2,8 +2,8 @@
 
 namespace Sergiors\Silex\Provider;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 use Symfony\Component\Templating\TemplateNameParser;
 use Symfony\Component\Templating\Loader\FilesystemLoader;
 use Symfony\Component\Templating\DelegatingEngine;
@@ -15,24 +15,22 @@ use Symfony\Bridge\Twig\TwigEngine;
  */
 class TemplatingServiceProvider implements ServiceProviderInterface
 {
-    public function register(Application $app)
+    public function register(Container $app)
     {
-        $app['templating.paths'] = [];
-
-        $app['templating.name_parser'] = $app->share(function () {
+        $app['templating.name_parser'] = function () use ($app) {
             return new TemplateNameParser();
-        });
+        };
 
-        $app['templating.loader'] = $app->share(function (Application $app) {
+        $app['templating.loader'] = function () use ($app) {
             $loader = new FilesystemLoader($app['templating.paths']);
-            if ($app['logger']) {
+            if (isset($app['logger'])) {
                 $loader->setLogger($app['logger']);
             }
 
             return $loader;
-        });
+        };
 
-        $app['templating'] = $app->share(function (Application $app) {
+        $app['templating'] = function () use ($app) {
             $engines = [
                 new PhpEngine($app['templating.name_parser'], $app['templating.loader']),
             ];
@@ -42,10 +40,8 @@ class TemplatingServiceProvider implements ServiceProviderInterface
             }
 
             return new DelegatingEngine($engines);
-        });
-    }
+        };
 
-    public function boot(Application $app)
-    {
+        $app['templating.paths'] = [];
     }
 }

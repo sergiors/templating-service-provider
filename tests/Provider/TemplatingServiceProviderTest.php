@@ -2,13 +2,12 @@
 
 namespace Sergiors\Silex\Tests\Provider;
 
-use Silex\Application;
-use Silex\WebTestCase;
+use Pimple\Container;
 use Silex\Provider\TwigServiceProvider;
 use Symfony\Component\Templating\EngineInterface;
 use Sergiors\Silex\Provider\TemplatingServiceProvider;
 
-class TemplatingServiceProviderTest extends WebTestCase
+class TemplatingServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
@@ -56,10 +55,10 @@ class TemplatingServiceProviderTest extends WebTestCase
 
     public function createApplication()
     {
-        $app = new Application();
-        $app['debug'] = true;
-        $app['exception_handler']->disable();
-
+        $app = new Container([
+            'debug' => true,
+            'charset' => 'utf-8'
+        ]);
         return $app;
     }
 }
