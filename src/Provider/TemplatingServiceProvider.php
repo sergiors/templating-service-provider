@@ -17,12 +17,13 @@ class TemplatingServiceProvider implements ServiceProviderInterface
 {
     public function register(Container $app)
     {
-        $app['templating.name_parser'] = function () use ($app) {
+        $app['templating.name_parser'] = function () {
             return new TemplateNameParser();
         };
 
-        $app['templating.loader'] = function () use ($app) {
+        $app['templating.loader'] = function (Container $app) {
             $loader = new FilesystemLoader($app['templating.paths']);
+
             if (isset($app['logger'])) {
                 $loader->setLogger($app['logger']);
             }
@@ -30,7 +31,7 @@ class TemplatingServiceProvider implements ServiceProviderInterface
             return $loader;
         };
 
-        $app['templating'] = function () use ($app) {
+        $app['templating'] = function (Container $app) {
             $engines = [
                 new PhpEngine($app['templating.name_parser'], $app['templating.loader']),
             ];

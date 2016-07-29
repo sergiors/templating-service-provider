@@ -9,6 +9,7 @@
     ],
     "license": "MIT",
     "require": {
+        "php": ">=5.5",
         "silex/silex": "^2",
         "symfony/templating": "~2.7|~3.0"
     },
